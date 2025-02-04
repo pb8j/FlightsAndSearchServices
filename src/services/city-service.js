@@ -43,7 +43,7 @@ class CityService {
             console.log("Something went wrong at service layer");
             throw {error};
         }
-    } 
+    }
 
     async getAllCities(filter) {
         try {

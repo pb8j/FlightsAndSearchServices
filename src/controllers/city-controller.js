@@ -1,5 +1,7 @@
 const { CityService } = require('../services/index');
+
 const cityService = new CityService();
+
 const create = async (req, res) => {
     try {
         const city = await cityService.createCity(req.body);
@@ -39,12 +41,13 @@ const destroy = async (req, res) => {
         });
     }
 }
+
 // GET -> /city/:id
 const get = async (req, res) => {
     try {
-        const city = await cityService.getCity(req.params.id);
+        const response = await cityService.getCity(req.params.id);
         return res.status(200).json({
-            data: city,
+            data: response,
             success: true,
             message: 'Successfully fetched a city',
             err: {}
@@ -59,6 +62,7 @@ const get = async (req, res) => {
         });
     }
 }
+
 // Patch -> /city/:id -> req.body
 const update = async (req, res) => {
     try {
@@ -80,7 +84,7 @@ const update = async (req, res) => {
     }
 }
 
-const getAll = async (req,res) => {
+const getAll = async (req, res) => {
     try {
         const cities = await cityService.getAllCities(req.query);
         return res.status(200).json({
